@@ -1,10 +1,10 @@
-import { Character } from "../../data/entities/Character";
+import { CharacterDto } from "../models/CharacterDto";
 import { CharacterRepository } from "../repositories/CharacterRepository";
 
 export class GetListOfCharactersUseCase {
   constructor(private characterRepository: CharacterRepository) {}
 
-  execute(): Promise<Character[]> {
-    return this.characterRepository.getAllCharacters();
+  execute(): void {
+    this.characterRepository.getAllCharacters();
   }
 }

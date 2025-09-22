@@ -1,23 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, FlatList } from 'react-native';
-import { useHomeViewModel } from '../viewModel/HomeViewModel';
+import { useCharacterViewModel, useEpisodeViewModel } from '../viewModel/HomeViewModel';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const HomeViewPage = () => {
-  const { characters, error, isLoading } = useHomeViewModel();
+  const { characters, error } = useCharacterViewModel();
+  const { episodes, isLoading, error: episodeError } = useEpisodeViewModel();
 
   if (isLoading) {
     return <SafeAreaView><ActivityIndicator /></SafeAreaView>;
   }
 
   if (error) {
-    return <SafeAreaView><Text>Error loading characters</Text></SafeAreaView>;
+    return <SafeAreaView><Text>Error loading characters or episodes</Text></SafeAreaView>;
   }
 
   return (
     <SafeAreaView>
         <View style={styles.container}>
             <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 16, color: '#000000' }}>Characters</Text>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 16, color: '#000000' }}>{episodes[0].episode}</Text>
             <FlatList
                 data={characters}
                 keyExtractor={(item) => item.userId.toString()}

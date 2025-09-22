@@ -1,3 +1,5 @@
+import { Info } from "./Info";
+
 export interface Character {
   id: number;
   name: string;
@@ -11,4 +13,9 @@ export interface Character {
   episode: string[];
   url: string;
   created: string;
+}
+
+export interface ListOfCharacters {
+    info: Info;
+    results: Character[];
 }

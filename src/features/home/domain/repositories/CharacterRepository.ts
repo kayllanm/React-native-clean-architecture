@@ -1,5 +1,5 @@
-import { Character } from "../../data/entities/Character";
+import { CharacterDto } from "../models/CharacterDto";
 
 export interface CharacterRepository {
-  getAllCharacters(): Promise<Character[]>;
+  getAllCharacters(): Promise<void>;
 }
