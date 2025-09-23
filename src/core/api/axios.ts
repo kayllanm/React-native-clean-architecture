@@ -12,7 +12,7 @@ const api = axios.create({
 // Add a request interceptor to automatically add the Authorization header
 api.interceptors.request.use(async (config) => {
   try {
-    const accessToken = await AsyncStorage.getItem("access_token");
+    const accessToken = await AsyncStorage.getItem("access_token"); // look at secure storage for production
 
     // If a token exists, add it to the Authorization header
     if (accessToken && config.headers) {
